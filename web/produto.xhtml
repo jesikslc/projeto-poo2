@@ -1,0 +1,110 @@
+<ui:composition template="template.xhtml"
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:define name="title">
+        <h:outputText value="Cadastro de produtos"/>
+    </ui:define>
+
+    <h:form id="formProduto">
+        <p:panelGrid columns="2">
+            
+            <p:outputLabel value="Produto: " />
+            
+            <p:selectOneRadio value="#{produtoMB.tipo}">
+                <f:selectItem itemLabel="Interno" itemValue="1"/>
+                <f:selectItem itemLabel="Exportação" itemValue="2"/>
+                <p:ajax update="formProduto"/>
+            </p:selectOneRadio>
+
+            <p:outputLabel value="Codigo"/>
+            <p:inputText value="#{produtoMB.prod.codigo}"/>
+            
+            <p:outputLabel value="Nome"/>
+            <p:inputText value="#{produtoMB.prod.nome}"/>
+            
+            <p:outputLabel value="Moeda"/>
+            <p:inputText value="#{produtoMB.prod.moeda}"/>
+            
+            <p:outputLabel value="Categoria"/>
+            
+            <p:selectOneMenu value="#{produtoMB.categoriaescolhida}" converter="converterCategoria" style="width:100%">
+                
+                <f:selectItems value="#{produtoMB.categorias}" var="aux" itemValue="#{aux}" itemLabel="#{aux.descricao}"/>
+            
+            </p:selectOneMenu>
+            
+            <p:outputLabel value="Preço"/>
+            <p:inputText value="#{produtoMB.prod.preco}"/>
+           
+            <p:outputLabel value="Imposto"/>
+            <p:inputText value="#{produtoMB.prod.imposto}"/>
+
+            <p:outputLabel value="Incentivo" rendered="#{produtoMB.tipo == 1}"/>
+            <p:selectBooleanCheckbox value="#{produtoMB.prod.incentivo}" rendered="#{produtoMB.tipo == 1}"/>
+            
+            <p:outputLabel value="Destino" rendered="#{produtoMB.tipo == 2}"/>
+            <p:inputText value="#{produtoMB.prod.destino}" rendered="#{produtoMB.tipo == 2}"/>
+            
+        </p:panelGrid>
+
+        <p:commandButton value="Salvar" action="#{produtoMB.salvar()}" update="formProduto"/>
+
+        <p:dataTable id="dataTableProd"
+                     var="p"
+                     value="#{produtoMB.produtos}"
+                     rows="10"
+                     paginator="true"
+                     paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink}"
+                     editable="true"
+                     >
+
+            <p:column headerText="Codigo">
+                <p:outputLabel value="#{p.codigo}"/>
+            </p:column>
+            
+            <p:column headerText="Nome">
+                <p:outputLabel value="#{p.nome}"/>
+            </p:column>
+            
+            <p:column headerText="Moeda">
+                <p:outputLabel value="#{p.moeda}"/>
+            </p:column>
+            
+            <p:column headerText="Categoria">
+                <p:cellEditor>
+                    
+                    <f:facet name="output"> 
+                        <p:outputLabel value="#{p.categoria.descricao}"/>
+                    </f:facet>
+                    
+                    <f:facet name="input" >
+                        <p:selectOneMenu value="#{p.categoria}" converter="converterCategoria" style="width:100%"/>
+                    </f:facet>
+                    
+                </p:cellEditor>
+            </p:column>
+            
+            <p:column headerText="Preço">
+                <p:outputLabel value="#{p.preco}"/>
+            </p:column>
+            
+            <p:column headerText="Imposto">
+                <p:outputLabel value="#{p.imposto}"/>
+            </p:column>
+            
+            <p:column headerText="Incentivo">
+                <p:outputLabel value="#{p['class'].simpleName.equals('ProdutoMercadoInterno') ? p.incentivo ? 'Sim' : 'Não' : ''}"/>
+            </p:column>
+            
+            <p:column headerText="Destino">
+                <p:outputLabel value="#{p['class'].simpleName.equals('ProdutoExportacao') ? p.destino : ''}"/>
+            </p:column>
+
+        </p:dataTable>
+    </h:form>
+
+</ui:composition>

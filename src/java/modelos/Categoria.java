@@ -19,8 +19,8 @@ public class Categoria implements Serializable {
     private int codigo;    
     private String descricao;
     
-//    @Transient
-//    private String naoPersiste;
+    @Transient
+    private String naoPersiste;
 
     @Override
     public int hashCode() {

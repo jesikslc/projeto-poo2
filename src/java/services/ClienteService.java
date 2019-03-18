@@ -5,7 +5,7 @@ import managedbeans.Dados;
 import modelos.Cliente;
 
 public class ClienteService {
-    private ArrayList<Cliente> clientes = Dados.getLISTA_CLIENTES();
+    private ArrayList<Cliente> clientes = new ArrayList<>();
     
     public void salvar(Cliente c){
         clientes.add(c);

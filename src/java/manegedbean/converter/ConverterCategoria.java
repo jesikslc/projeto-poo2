@@ -17,7 +17,8 @@ public class ConverterCategoria implements Converter {
 
         Categoria c = null;
         if (value != null && !value.equals("")) {
-            c = servico.getCategoriaByDescricao(value);
+            //c = servico.getCategoriaByDescricao(value);
+            //getcategoriabyid
         }
 
         return c;

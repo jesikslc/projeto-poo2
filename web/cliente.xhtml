@@ -14,7 +14,7 @@
         <p:panelGrid columns="2">
        
             <p:outputLabel value="Código:"/>
-            <p:inputText   value="#{clienteMB.cli.codigo}"/>
+            <p:inputText   value="#{clienteMB.cli.codigo}" placeholder="001"/>
             
             <p:outputLabel value="Nome:"/>
             <p:inputText   value="#{clienteMB.cli.nome}"/>
@@ -22,8 +22,8 @@
             <p:outputLabel value="Endereço:"/>
             <p:inputText   value="#{clienteMB.cli.endereco}"/>
             
-            <p:outputLabel value="Telefone:"/>
-            <p:inputText   value="#{clienteMB.cli.telefone}"/>
+            <p:outputLabel value="Telefone:"/>            
+            <p:inputMask value="#{clienteMB.cli.telefone}" mask="(99)99999-9999"/>
             
             <p:outputLabel value="Status:"/>
             <p:inputText   value="#{clienteMB.cli.status}"/>

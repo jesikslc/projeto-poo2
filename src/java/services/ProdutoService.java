@@ -1,11 +1,11 @@
 package services;
 
 import java.util.ArrayList;
-import managedbeans.Dados;
+//import managedbeans.Dados;
 import modelos.Produto;
 
 public class ProdutoService {
-    private ArrayList<Produto> produtos = Dados.getLISTA_PRODUTOS();
+    private ArrayList<Produto> produtos = new ArrayList<>();
     
     public void salvar(Produto p){
         produtos.add(p);

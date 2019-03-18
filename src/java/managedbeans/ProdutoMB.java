@@ -16,7 +16,7 @@ public class ProdutoMB {
     private ProdutoService servico = new ProdutoService();
     private CategoriaService categoriaservice = new CategoriaService();
     private Categoria categoriaescolhida;
-    private Produto prod = new ProdutoMercadoInterno();
+    private Produto prod;
     private Produto produtoescolhido;
     private int tipo = 1;
     

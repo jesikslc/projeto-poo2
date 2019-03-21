@@ -12,10 +12,16 @@ import services.CategoriaService;
 public class CategoriaMB {
     private CategoriaService servico = new CategoriaService();
     private Categoria categoria = new Categoria();
-    //private ArrayList<Categoria> categorias = new ArrayList<>();
     private List<Categoria> categorias;
 
-    public List<Categoria> getCategorias() {
+//    public List<Categoria> getCategorias() {
+//        if (categorias == null){
+//            categorias = servico.getCategorias();
+//        }
+//        return categorias;
+//    }
+    
+    public List<Categoria> getCategorias(){
         return servico.getCategorias();
     }
 
@@ -30,6 +36,10 @@ public class CategoriaMB {
     public void salvar(){
         servico.salvar(categoria);
         categoria = new Categoria();
+    }
+    
+    public void excluir(Categoria c){
+        servico.excluir(c);
     }
     
 //    public void pesquisarCategoria(){

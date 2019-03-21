@@ -16,7 +16,6 @@ public class CategoriaService {
     public void salvar(Categoria c){
         EntityManager em = emf.createEntityManager();
         em.getTransaction().begin();
-        //em.persist(c);
         em.merge(c);
         em.getTransaction().commit();
         em.close();
@@ -31,20 +30,20 @@ public class CategoriaService {
         return categorias;
     }
     
+    public void excluir(Categoria c){
+        EntityManager em = emf.createEntityManager();
+        //Categoria cat = em.find(Categoria.class, c.getCodigo());
+        em.getTransaction().begin();
+        em.remove(em.find(Categoria.class, c.getCodigo()));
+        em.getTransaction().commit();
+        em.close();
+    }
+    
     public Categoria findCategoriaById(int codigo){
         EntityManager em = emf.createEntityManager();
         Categoria c = em.find(Categoria.class, codigo);
         em.close();
         return c;
     }
-//
-//    public Categoria getCategoriaByDescricao(String s)
-//    {
-//        for(Categoria c : categorias)
-//        {
-//            if(c.getDescricao().equals(s))
-//                return c;
-//        }
-//        return null;
-//    }
+
 }

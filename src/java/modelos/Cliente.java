@@ -1,9 +1,17 @@
 package modelos;
 
 import java.util.ArrayList;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
+@Entity
+@Table(name = "TB_CLIENTE")
 public class Cliente {
-    private int codigo, status;
+    
+    @Id
+    private int codigo;
+    private int status;
     private String nome, endereco, telefone;
     private double limite;
     private ArrayList<Pedido> pedidos = new ArrayList<Pedido>();

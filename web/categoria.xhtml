@@ -28,17 +28,32 @@
                      style="width: 35%"
                      >
             
+            <p:ajax event="cellEdit" listener="#{categoriaMB.editar}" update="dataTable"/>
+            
+            
             <p:column headerText="Categoria">
-                <p:outputLabel value="#{c.descricao}"/>
+                <p:cellEditor>
+                    <f:facet name="output"><h:outputText value="#{c.descricao}" /></f:facet>
+                    <f:facet name="input"><p:inputText value="#{c.descricao}" 
+                                                       style="width:100%" label="Descrição"/>
+                    </f:facet>
+
+                </p:cellEditor>
             </p:column>
             
-            <p:column>
+            <p:column headerText="Excluir">
                 <p:commandButton value="Excluir"
                                  title="Excluir"
                                  actionListener="#{categoriaMB.excluir(c)}"                                 
                                  update="dataTable"
                                  ajax="true"
                                  />
+            </p:column>
+            
+            
+            
+            <p:column headerText="Editar">
+                <p:rowEditor />
             </p:column>
 
         </p:dataTable>

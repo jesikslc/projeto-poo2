@@ -1,27 +1,48 @@
 package services;
 
-import java.util.ArrayList;
-import managedbeans.Dados;
+import java.util.List;
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
 import modelos.Cliente;
 
 public class ClienteService {
-    private ArrayList<Cliente> clientes = new ArrayList<>();
+    private EntityManagerFactory emf;
+        
+    public ClienteService(){
+        emf = Persistence.createEntityManagerFactory("Projeto_POO2PU");
+    }
     
     public void salvar(Cliente c){
-        clientes.add(c);
+        EntityManager em = emf.createEntityManager();
+        em.getTransaction().begin();
+        em.merge(c);
+        em.getTransaction().commit();
+        em.close();
     }
-
-    public ArrayList<Cliente> getClientes() {
+    
+    public List<Cliente> getClientes(){
+        EntityManager em = emf.createEntityManager();
+        List<Cliente> clientes = em.createQuery("Select c from Cliente c")
+                .getResultList();
+        em.close();
+        
         return clientes;
     }
     
-     public Cliente getClienteByName(String s){
-         
-        for(Cliente c : clientes){
-            if(c.getNome().equals(s)){
-                return c;
-            }
-        }
-        return null;
+    public Cliente excluir(Cliente c){
+        EntityManager em = emf.createEntityManager();
+        em.getTransaction().begin();
+        em.remove(em.find(Cliente.class, c.getCodigo()));
+        em.close();
+        return c;        
     }
+    
+    public Cliente findClienteById(int codigo){
+        EntityManager em = emf.createEntityManager();
+        Cliente cliente =em.find(Cliente.class, codigo);
+        em.close();
+        return cliente;
+    }
+
 }

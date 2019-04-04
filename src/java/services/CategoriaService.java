@@ -32,7 +32,6 @@ public class CategoriaService {
     
     public void excluir(Categoria c){
         EntityManager em = emf.createEntityManager();
-        //Categoria cat = em.find(Categoria.class, c.getCodigo());
         em.getTransaction().begin();
         em.remove(em.find(Categoria.class, c.getCodigo()));
         em.getTransaction().commit();

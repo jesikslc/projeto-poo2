@@ -2,9 +2,13 @@ package managedbeans;
 
 import java.util.ArrayList;
 import java.util.List;
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
+import javax.faces.context.FacesContext;
 import modelos.Categoria;
+import org.primefaces.event.CellEditEvent;
+import org.primefaces.event.RowEditEvent;
 import services.CategoriaService;
 
 @ManagedBean
@@ -13,13 +17,6 @@ public class CategoriaMB {
     private CategoriaService servico = new CategoriaService();
     private Categoria categoria = new Categoria();
     private List<Categoria> categorias;
-
-//    public List<Categoria> getCategorias() {
-//        if (categorias == null){
-//            categorias = servico.getCategorias();
-//        }
-//        return categorias;
-//    }
     
     public List<Categoria> getCategorias(){
         return servico.getCategorias();
@@ -41,10 +38,6 @@ public class CategoriaMB {
     public void excluir(Categoria c){
         servico.excluir(c);
     }
-    
-//    public void pesquisarCategoria(){
-//        categoria = servico.findCategoriaById(codigo);
-//    }
      
     public Categoria getCategoria() {
         return categoria;

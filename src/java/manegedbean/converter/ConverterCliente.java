@@ -18,7 +18,7 @@ public class ConverterCliente implements Converter{
         Cliente c = null;
         if(string != null && !string.equals(""))
         {
-            c = cservice.getClienteByName(string);
+//            c = cservice.getClienteByName(string);
         }
         return c;
     }

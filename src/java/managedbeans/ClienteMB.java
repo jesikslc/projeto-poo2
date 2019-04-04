@@ -11,11 +11,16 @@ import services.ClienteService;
 public class ClienteMB {
     private ClienteService servico = new ClienteService();
     private Cliente cli = new Cliente();
+    private List<Cliente> clientes;
     private Cliente clienteescolhido;
     
     public void salvar(){
         servico.salvar(cli);
         cli = new Cliente();
+    }
+    
+    public void excluir(Cliente c){
+        servico.excluir(c);
     }
 
     public Cliente getCli() {

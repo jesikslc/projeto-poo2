@@ -2,6 +2,8 @@ package modelos;
 
 import java.util.ArrayList;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
@@ -10,12 +12,14 @@ import javax.persistence.Table;
 public class Cliente {
     
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private int codigo;
     private int status;
     private String nome, endereco, telefone;
     private double limite;
-    private ArrayList<Pedido> pedidos = new ArrayList<Pedido>();
+    private ArrayList<Pedido> pedidos = new ArrayList<>();
 
+    //construtor
     public Cliente(int codigo, int status, String nome, String endereco, String telefone, double limite){
         this.codigo = codigo;
         this.status = status;
@@ -23,6 +27,28 @@ public class Cliente {
         this.endereco = endereco;
         this.telefone = telefone;
         this.limite = limite;
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 59 * hash + this.codigo;
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Cliente other = (Cliente) obj;
+        if (this.codigo != other.codigo) {
+            return false;
+        }
+        return true;
     }
     
     public Cliente(){

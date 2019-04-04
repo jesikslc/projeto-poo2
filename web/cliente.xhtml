@@ -12,9 +12,6 @@
     <h:form id="formcliente">
 
         <p:panelGrid columns="2">
-       
-            <p:outputLabel value="Código:"/>
-            <p:inputText   value="#{clienteMB.cli.codigo}" placeholder="001"/>
             
             <p:outputLabel value="Nome:"/>
             <p:inputText   value="#{clienteMB.cli.nome}"/>
@@ -75,6 +72,16 @@
                     <f:setPropertyActionListener  value="#{c}" target="#{clienteMB.clienteescolhido}"/>
                 </p:commandButton>
             </p:column>
+            
+            <p:column headerText="Excluir">
+                <p:commandButton value="Excluir"
+                                 title="Excluir"
+                                 actionListener="#{clienteMB.excluir(c)}"                                 
+                                 update="dataTableCli"
+                                 ajax="true"
+                                 />
+            </p:column>
+            
 
         </p:dataTable>
         

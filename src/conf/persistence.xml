@@ -6,7 +6,7 @@
     <class>modelos.Cliente</class>
     <exclude-unlisted-classes>false</exclude-unlisted-classes>
     <properties>
-      <property name="javax.persistence.jdbc.url" value="jdbc:derby://localhost:1527/DBProjeto"/>
+      <property name="javax.persistence.jdbc.url" value="jdbc:derby://localhost:1527/POO2DB"/>
       <property name="javax.persistence.jdbc.user" value="app"/>
       <property name="javax.persistence.jdbc.driver" value="org.apache.derby.jdbc.ClientDriver"/>
       <property name="javax.persistence.jdbc.password" value="app"/>

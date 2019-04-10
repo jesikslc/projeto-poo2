@@ -1,5 +1,6 @@
 package modelos;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -9,7 +10,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "TB_CLIENTE")
-public class Cliente {
+public class Cliente implements Serializable {
     
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

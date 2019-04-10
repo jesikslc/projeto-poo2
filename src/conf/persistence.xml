@@ -4,9 +4,10 @@
     <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
     <class>modelos.Categoria</class>
     <class>modelos.Cliente</class>
+    <class>modelos.Pedido</class>
     <exclude-unlisted-classes>false</exclude-unlisted-classes>
     <properties>
-      <property name="javax.persistence.jdbc.url" value="jdbc:derby://localhost:1527/DBProjeto"/>
+      <property name="javax.persistence.jdbc.url" value="jdbc:derby://localhost:1527/ProjetoBanco"/>
       <property name="javax.persistence.jdbc.user" value="app"/>
       <property name="javax.persistence.jdbc.driver" value="org.apache.derby.jdbc.ClientDriver"/>
       <property name="javax.persistence.jdbc.password" value="app"/>

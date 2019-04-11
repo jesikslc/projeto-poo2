@@ -1,5 +1,10 @@
 package modelos;
 
+import javax.persistence.Entity;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "TB_PRODUTOMERCADOINTERNO")
 public class ProdutoMercadoInterno extends Produto {
     private boolean incentivo;
     

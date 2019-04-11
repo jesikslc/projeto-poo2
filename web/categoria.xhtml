@@ -16,49 +16,32 @@
         </p:panelGrid>
         
         <p:commandButton value="Salvar" action="#{categoriaMB.salvar()}" update="formCategoria" ajax="true"/>
+        <p:commandButton value="Apagar" action="#{categoriaMB.excluir(categoriaMB.categoria)}" update="formCategoria" ajax="true"/>
+        <p:commandButton value="Mudar" action="#{categoriaMB.editar()}" update="formCategoria" ajax="true"/>
         
-        
-        <p:dataTable id="dataTable"
-                     var="c"
-                     value="#{categoriaMB.categorias}"
-                     rows="10"
-                     paginator="true"
-                     paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink}"
-                     editable="true"
-                     style="width: 35%"
-                     >
+        <p:dataTable>     
             
             <p:ajax event="cellEdit" listener="#{categoriaMB.editar}" update="dataTable"/>
             
             
             <p:column headerText="Categoria">
                 <p:cellEditor>
-                    <f:facet name="output"><h:outputText value="#{c.descricao}" /></f:facet>
-                    <f:facet name="input"><p:inputText value="#{c.descricao}" 
+                    <f:facet name="output"><h:outputText value="#{categoriaMB.descricao}" /></f:facet>
+                    <f:facet name="input"><p:inputText value="#{categoriaMB.descricao}" 
                                                        style="width:100%" label="Descrição"/>
                     </f:facet>
 
                 </p:cellEditor>
-            </p:column>
-            
-            <p:column headerText="Excluir">
-                <p:commandButton value="Excluir"
-                                 title="Excluir"
-                                 actionListener="#{categoriaMB.excluir(c)}"                                 
-                                 update="dataTable"
-                                 ajax="true"
-                                 />
-            </p:column>
-            
-            
-            
-            <p:column headerText="Editar">
-                <p:rowEditor />
-            </p:column>
+            </p:column>         
 
-        </p:dataTable>
-        
-    </h:form>
-            
-        
+            <p:column headerText="Editar">
+                <p:commandButton value="Editar"
+                 title="Editar"
+                 actionListener="#{categoriaMB.editar()}"
+                 update="dataTable"
+                 ajax="true"
+                 />
+            </p:column>
+        </p:dataTable>        
+    </h:form>        
 </ui:composition>

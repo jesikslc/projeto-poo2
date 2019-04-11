@@ -16,7 +16,17 @@ public class CategoriaService {
     public void salvar(Categoria c){
         EntityManager em = emf.createEntityManager();
         em.getTransaction().begin();
-        em.merge(c);
+        em.persist(c);
+        em.getTransaction().commit();
+        em.close();
+    }
+    
+    public void editar(Categoria c){
+        EntityManager em = emf.createEntityManager();
+        em.getTransaction().begin();
+        if(em.find(Categoria.class, c.getCodigo())!=null){
+            em.merge(c);
+        }
         em.getTransaction().commit();
         em.close();
     }

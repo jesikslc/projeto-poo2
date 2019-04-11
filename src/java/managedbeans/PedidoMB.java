@@ -23,13 +23,6 @@ public class PedidoMB {
     private Cliente clienteescolhido;
     private Pedido pedidoescolhido;
 
-    public void salvarItem(){
-        i.setProduto(produtoescolhido);
-        p.AdionarItem(i);
-        i = new ItemPedido();
-        produtoescolhido = null;
-    }
-    
     public void salvar()
     {
         if(clienteescolhido != null){
@@ -55,11 +48,6 @@ public class PedidoMB {
 
     public void setP(Pedido p) {
         this.p = p;
-    }
-    
-    public List<Pedido> getPedidos()
-    {
-        return servico.getPedidos();
     }
 
     public void setClienteescolhido(Cliente clienteescolhido) {

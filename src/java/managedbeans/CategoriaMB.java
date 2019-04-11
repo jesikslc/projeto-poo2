@@ -2,13 +2,9 @@ package managedbeans;
 
 import java.util.ArrayList;
 import java.util.List;
-import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
-import javax.faces.context.FacesContext;
 import modelos.Categoria;
-import org.primefaces.event.CellEditEvent;
-import org.primefaces.event.RowEditEvent;
 import services.CategoriaService;
 
 @ManagedBean
@@ -32,6 +28,11 @@ public class CategoriaMB {
     
     public void salvar(){
         servico.salvar(categoria);
+        categoria = new Categoria();
+    }
+    
+    public void editar(){
+        servico.editar(categoria);
         categoria = new Categoria();
     }
     

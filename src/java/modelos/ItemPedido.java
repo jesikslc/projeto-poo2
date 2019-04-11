@@ -1,7 +1,16 @@
 package modelos;
 
-public class ItemPedido {
-    private int numero, quantidade;
+import java.io.Serializable;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "TB_ITEMPEDIDO")
+public class ItemPedido implements Serializable {
+    @Id
+    private int numero;
+    private int quantidade;
     private Produto produto;
     
     public double totalItem(){

@@ -1,37 +1,48 @@
 package modelos;
 
-import java.util.ArrayList;
+import java.io.Serializable;
 import java.util.Date;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+import javax.persistence.Temporal;
 
-public class Pedido {
+@Entity
+@Table(name = "TB_PEDIDO")
+public class Pedido implements Serializable {
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private long numero;
+    @Temporal(javax.persistence.TemporalType.DATE)
     private Date data;
-    private ArrayList<ItemPedido> itens = new ArrayList<ItemPedido>();
+    @ManyToOne
+    @JoinColumn
     private Cliente cliente;
-    
-    public double totalPedido(){
-        double total = 0;
-        for (ItemPedido i : itens){ total += i.totalItem(); }
-        return total;
-    }
-    
-    public double totalImposto(){
-        double total = 0;
-        for(ItemPedido i : itens){ total += i.getImposto(); }
-        return total;
+
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 79 * hash + (int) (this.numero ^ (this.numero >>> 32));
+        return hash;
     }
 
-    public ArrayList<ItemPedido> getItens() {
-        return itens;
-    }
-
-    public void setItens(ArrayList<ItemPedido> itens) {
-        this.itens = itens;
-    }
-    
-    public void AdionarItem(ItemPedido i)
-    {
-        itens.add(i);
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Pedido other = (Pedido) obj;
+        if (this.numero != other.numero) {
+            return false;
+        }
+        return true;
     }
 
     public long getNumero() {
@@ -57,4 +68,10 @@ public class Pedido {
     public void setCliente(Cliente cliente) {
         this.cliente = cliente;
     }
+
+    @Override
+    public String toString() {
+        return "Pedido{" + "numero=" + numero + '}';
+    }
+        
 }

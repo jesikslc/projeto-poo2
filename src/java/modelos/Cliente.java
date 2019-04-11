@@ -3,10 +3,13 @@ package modelos;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -16,12 +19,14 @@ public class Cliente implements Serializable {
     
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "ClienteID")
     private int codigo;
     private int status;
     private String nome, endereco, telefone;
     private double limite;
     @OneToMany
-    private List pedidos = new ArrayList<>();
+    @JoinColumn(name = "numero")
+    private List<Pedido> pedidos = new ArrayList<>();
 
     //construtor
     public Cliente(int codigo, int status, String nome, String endereco, String telefone, double limite){

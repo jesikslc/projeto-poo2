@@ -16,7 +16,7 @@ public class ConverterProduto implements Converter{
         Produto p = null;
         if(s != null && !s.equals(""))
         {
-            p = servico.getProdutobyName(s);
+            //p = servico.getProdutobyName(s);
         }
         return p;
     }

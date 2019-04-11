@@ -13,7 +13,7 @@ import javax.persistence.Transient;
 public class Categoria implements Serializable {
     
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.AUTO)    
     private int codigo;    
     private String descricao;
     

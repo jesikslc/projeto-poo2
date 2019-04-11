@@ -3,17 +3,19 @@ package modelos;
 import java.io.Serializable;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
 @Table(name = "TB_PRODUTO")
-public abstract class Produto implements Serializable {
+public class Produto implements Serializable {
     @Id
     private int codigo;
     private int moeda;
     private String nome;
     @OneToOne
+    @JoinColumn(name = "codigo")
     private Categoria categoria;
     private double preco, imposto;
 

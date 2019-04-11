@@ -2,10 +2,12 @@ package modelos;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -18,7 +20,8 @@ public class Cliente implements Serializable {
     private int status;
     private String nome, endereco, telefone;
     private double limite;
-    private ArrayList<Pedido> pedidos = new ArrayList<>();
+    @OneToMany
+    private List pedidos = new ArrayList<>();
 
     //construtor
     public Cliente(int codigo, int status, String nome, String endereco, String telefone, double limite){
@@ -108,7 +111,7 @@ public class Cliente implements Serializable {
         pedidos.add(p);
     }
 
-    public ArrayList<Pedido> getPedidos() {
+    public List<Pedido> getPedidos() {
         return pedidos;
     }
 }

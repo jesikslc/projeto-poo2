@@ -38,11 +38,7 @@ public class Main {
         Produto prod1 = new Produto(1, 2, "Violão", cat3, 2000, 20);
         Produto prod2 = new Produto(2, 3, "Boneca", cat1, 30, 10);
         Produto prod3 = new Produto(3, 4, "Macarrão", cat2, 10, 20);
-        
-        Pedido ped1 = new Pedido();
-        Pedido ped2 = new Pedido();
-        Pedido ped3 = new Pedido();
-        
+      
 
         EntityManagerFactory emf = Persistence.createEntityManagerFactory("Projeto_POO2PU");       
 
